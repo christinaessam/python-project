@@ -1,0 +1,12 @@
+{% load threadedcomments_tags %}
+<html>
+<body>
+	Post Title : {{post.title}}
+	<br><br>
+	Post Content : {{post.content}}
+
+	{% render_comment_list for post %}
+	{% render_comment_form for post with 1 %}
+
+</body>
+</html>
