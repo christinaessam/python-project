@@ -10,7 +10,7 @@ class Post(models.Model):
 	title = models.CharField(max_length = 200)
 	#pictue = models.ImageField()
 	content = models.TextField()
-	post_category= models.ForeignKey(Category)
+	#post_category= models.ForeignKey(Category)
 
 class Tag(models.Model):
 	tag_name = models.CharField(max_length = 200)
