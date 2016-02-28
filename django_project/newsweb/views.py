@@ -33,6 +33,12 @@ def createpost(requset):
 	newpost.post_category_id = request.POST['category']
 	newpost.save()
 	return render(request,'blog.html',{'testvar':"Testing 2",'blogs':blogs,'user':user}) 
+
+def sport(request):
+	#return HttpResponse("hello")
+	obj = Post.objects.filter(post_category=1)
+	context = {'post':obj}
+	return render(request,'sport.html',context)
 	
 		
 

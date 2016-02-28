@@ -1,0 +1,17 @@
+<html>
+<table>
+  {% for p in post %}
+<tr>
+  <td>Post Title :</td>
+  <td>{{p.title}}</td>
+</tr>
+<tr>
+  <td>
+    Post Content :
+  </td>
+  <td>{{p.post_content }}</td>
+</tr>
+<tr><img src="python_project/{{p.pictue_url}}"/></tr>
+{% endfor %}
+</table>
+</html>

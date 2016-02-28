@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ckeditor_uploader', 
     'threadedcomments',
     'django_comments',
     'django.contrib.sites',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
 ]
 
 COMMENTS_APP = 'threadedcomments'
@@ -130,5 +132,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/home/mohamed/django_project/media' #the full path where images will uploaded
-MEDIA_URL = 'media/' #the relative path that'll used when acces the directory from the browser
+MEDIA_ROOT='/home/merna/python-project/django_project/uploads'
+MEDIA_URL = '/media/'
+#MEDIA_ROOT = '/home/mohamed/django_project/media' #the full path where images will uploaded
+#MEDIA_URL = 'media/' #the relative path that'll used when acces the directory from the browser
+CKEDITOR_UPLOAD_PATH='uploads/'
+#add more features
+CKEDITOR_CONFIGS={
+    'default':{
+    'toolbar':None,
+    }
+}
