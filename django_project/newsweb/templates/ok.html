@@ -56,6 +56,9 @@
 					<small>{{post.author}}</small>
 				</div>
 				{{post.post_content | safe}}
+				{% for tag in tags %}
+				<a href="#">{{tag.tag_name}}</a>
+				{% endfor %}
 
 			</div>
 		</div>

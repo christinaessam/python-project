@@ -2,14 +2,17 @@ from django.shortcuts import render
 from django.http import request,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-from models import Post
+from models import Post,Tag
 
 
 # Create your views here.
 def showpost(request):
 	#return HttpResponse("hello")
 	obj = Post.objects.get(id = 1)
-	context = {'post':obj}
+	#tags_ids = newsweb_post_tags.objects.filter(post_id=1)
+	#for t in tags_ids:
+	tags= Tag.objects.filter(post=1)
+	context = {'post':obj,'tags':tags}
 	return render(request,'ok.html',context)
 	
 def index(request):
