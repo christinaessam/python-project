@@ -1,0 +1,21 @@
+<div id="form-comment">
+    <form action="/comments/post/" method="post">{% csrf_token %}
+       {# just to keep the example simple. Consider using django-crispy-forms in real life #}
+
+
+
+        {{ form.csrfmiddlewaretoken}}
+        {{ form.comment }}
+
+
+        {{ form.content_type }}
+        {{ form.object_pk }}
+        {{ form.timestamp }}
+        {{ form.security_hash }}
+        {{ form.parent }}
+        <p>
+            <input type="submit" value="Submit Comment"/>
+            <a href="#c0" id="cancel_reply">cancel reply</a>
+        </p>
+    </form>
+</div>

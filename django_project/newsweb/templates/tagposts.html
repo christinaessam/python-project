@@ -1,0 +1,63 @@
+{% load threadedcomments_tags %}
+<html>
+<head>
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<style type="text/css" >
+		.centerdiv{
+			width :45%;
+			margin-left : auto;
+			margin-right : auto;
+			margin-top :50px;
+			text-align : center;
+		}
+		.login{
+			margin-left : auto;
+			margin-right : auto;
+			text-align : center;
+			width :45%;
+		}
+		.blog{
+			margin-top : 0px;
+			margin-left : auto;
+			margin-right : auto;
+			text-align : center;
+			width :45%;
+		}
+		
+	</style>
+	<nav class = "navbar navbar-default navbar-fixedtop" role="navigation">
+		<ul class="nav navbar-nav">
+			{% if user != None %} <!-- check user is not null --> 
+			<a class="navbar-brand" href="#">{{user.username}}</a>
+			<li><a href="#" data-toggle="modal" data-target="#addpost">Add Blog</a>
+			{% endif %}
+			<li><a href="#" data-toggle="modal" data-target="#login" >Login!</a></li> <!--data-toggle and data-target used to make login button open login dialog -->
+		</ul>	
+	</nav>
+	<!--Show all Posts -->	
+	
+	
+	<div class = "blog well">
+				{% for post in posts %}
+				<h3>{{post.title}}</h3>
+				{{post.post_content | safe}}
+				<hr>
+				{% endfor %}
+
+		</div>
+	</div>
+	
+
+
+</body>
+</html>
