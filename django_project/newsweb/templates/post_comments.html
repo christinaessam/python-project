@@ -89,7 +89,11 @@
 		<div>
 			
 	{% render_comment_list for post %}
-	{% get_comment_form for post as commentform %}
+		{% if user.is_authenticated %}
+Content for logged in users.
+
+
+			{% get_comment_form for post as commentform %}
 	
 	
 	<div id="form-comment">
@@ -119,6 +123,7 @@
         
     </form>
 </div>
+{% endif %}
 	
 	
 
