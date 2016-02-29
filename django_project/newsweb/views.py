@@ -50,11 +50,7 @@ def logout_page(request):
  
 @login_required
 def home(request):
-    return render_to_response(
-    'home.html',
-    { 'user': request.user ,
-'user_id': request.session.get('user_id')}
-    )
+    return render_to_response('home.html', { 'user': request.user ,'user_id': request.session.get('user_id')})
 ###################end   login & registration ################################
 
 # Create your views here.
@@ -63,7 +59,7 @@ def showpost(request,p_id):
 
 	obj = Post.objects.get(id =p_id)
 	tags= Tag.objects.filter(post=p_id)
-	context = {'post':obj,'tags':tags}
+	context = {'user': request.user ,'post':obj,'tags':tags}
 	return render(request,'post_comments.html',context)
 
 	

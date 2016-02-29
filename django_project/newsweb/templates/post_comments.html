@@ -19,6 +19,7 @@
 			margin-right : auto;
 			margin-top :50px;
 			text-align : center;
+			background-color: 
 		}
 		.login{
 			margin-left : auto;
@@ -33,7 +34,29 @@
 			text-align : center;
 			width :45%;
 		}
-		
+		textarea {
+  		  height: 100px;
+		}
+		dt {
+   			 display: block;
+   			 color: red;
+   			 padding-left: 5px;
+   			 text-align:left;
+			}
+
+		dd p{
+			display: block;
+   			padding-left: 5px;
+   			text-align:left;
+   			font-style: bold;
+   			font-size: 18;
+		}
+
+		ul
+			{
+  			  list-style-type: none;
+			}	
+}
 	</style>
 	<nav class = "navbar navbar-default navbar-fixedtop" role="navigation">
 		<ul class="nav navbar-nav">
@@ -66,9 +89,41 @@
 		<div>
 			
 	{% render_comment_list for post %}
-	{% render_comment_form for post %}
+		{% if user.is_authenticated %}
+Content for logged in users.
+
+
+			{% get_comment_form for post as commentform %}
 	
 	
+	<div id="form-comment">
+    <form action="/comments/post/" method="post">{% csrf_token %}
+       {# just to keep the example simple. Consider using django-crispy-forms in real life #}
+        {{ commentform.csrfmiddlewaretoken}}
+       
+  		<table>
+  			<tr>
+  				<td><label for="comment">Comment:</label></td>
+  				<td>{{ commentform.comment }}</td>
+  			</tr>
+  			<tr>
+  				<td> <input type="submit" value="Submit Comment"/></td>
+            </tr>
+            <tr>
+            	<td></td>
+            </tr>
+  		</table>	   
+        {{ commentform.content_type }}
+        {{ commentform.object_pk }}
+        {{ commentform.timestamp }}
+        {{ commentform.security_hash }}
+        {{ commentform.parent }}
+         
+           
+        
+    </form>
+</div>
+{% endif %}
 	
 	
 
