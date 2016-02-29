@@ -43,6 +43,7 @@ urlpatterns = [
 
     url(r'^ckeditor/', include('ckeditor_uploader.urls')), #Added Uploader url 
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,}),
+    url(r'^main/',views.main),
 
 ]
     

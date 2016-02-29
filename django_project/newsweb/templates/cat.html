@@ -1,4 +1,6 @@
+{% extends "base.html" %}
 <html>
+{% block data %}
 <table>
   {% for p in post %}
 <tr>
@@ -20,3 +22,4 @@
 {% endfor %}
 </table>
 </html>
+{% endblock %}

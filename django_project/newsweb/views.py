@@ -12,6 +12,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 ###################start login & registration ################################
 @csrf_protect
@@ -97,6 +98,27 @@ def cat(request,cat_id):
 def tag_posts(request,tag_id):
 	posts = Post.objects.filter(tags=tag_id)
 	return render(request,'tagposts.html', {'posts':posts})
+
+#def main(request):
+#	obj = Post.objects.filter().order_by('-date')
+#	context = {'post':obj}
+#	return render(request,'mainpage.html',context)
+
+
+def main(request):
+	post_list = Post.objects.all().order_by('-date')
+	paginator = Paginator(post_list, 5) # Show 25 contacts per page
+	page_num = request.GET.get('page')
+	try:
+		posts = paginator.page(page_num)
+	except PageNotAnInteger:
+        # If page is not an integer, deliver first pageself.
+ 		posts = paginator.page(1)
+	except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+		posts = paginator.page(paginator.num_pages)
+	return render(request, 'mainpage.html', {'posts': posts})
+
 
 	
 		
