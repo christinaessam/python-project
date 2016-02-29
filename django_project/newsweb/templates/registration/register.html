@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-{% block title %}User Registration{% endblock %}
-{% block head %}User Registration{% endblock %}
-{% block content %}
+{% block data %}
     <form method="post" action=".">{% csrf_token %}
         <table border="0">
             {{ form.as_table }}
