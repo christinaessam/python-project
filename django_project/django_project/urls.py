@@ -18,11 +18,22 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from newsweb import views 
 from django_project import settings
-#from django.conf.urls.static import static
-#import settings
+
+# imports for login & registration
+from django.conf.urls import patterns
+from newsweb.views import *
+
+
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
+    url(r'^$', 'django.contrib.auth.views.login'),#defaultpage>localhost:8000
+    url(r'^logout/$', logout_page),#click logout link
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+        # If user is not login it will redirect to login page
+    url(r'^register/$', register),#click register button @ default page
+    url(r'^register/success/$', register_success),#click register button @ RegPage
+    url(r'^home/$', home),#click login button @ default page
     url(r'^showpost/',views.showpost),
     url(r'^addpost/',views.createpost),
     url(r'^comments/', include('django_comments.urls')),
@@ -36,7 +47,12 @@ urlpatterns = [
     
 #urlpatterns += static(settings.MEDIA_URL, document_root=setting.MEDIA_ROOT
 
-
+urlpatterns = [
+    url(r'^register/$', register),
+    url(r'^register/success/$', register_success),
+    url(r'^home/$', home),
+    #url(r'^test1/', include('test1.urls'))
+]
 
 
 
