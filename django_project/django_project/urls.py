@@ -49,13 +49,4 @@ urlpatterns = [
     
 #urlpatterns += static(settings.MEDIA_URL, document_root=setting.MEDIA_ROOT
 
-urlpatterns = [
-    url(r'^register/$', register),
-    url(r'^register/success/$', register_success),
-    url(r'^home/$', home),
-    #url(r'^test1/', include('test1.urls'))
-]
-
-
-
 

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import request,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-from models import Post,Tag
+from .models import Post,Tag
 
 # imports for login & registration
 from newsweb.forms import *
