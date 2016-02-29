@@ -6,9 +6,9 @@ from models import Post
 
 
 # Create your views here.
-def showpost(request):
+def showpost(request,p_id):
 	#return HttpResponse("hello")
-	obj = Post.objects.get(id = 1)
+	obj = Post.objects.get(id =p_id)
 	context = {'post':obj}
 	return render(request,'ok.html',context)
 	
@@ -34,11 +34,11 @@ def createpost(requset):
 	newpost.save()
 	return render(request,'blog.html',{'testvar':"Testing 2",'blogs':blogs,'user':user}) 
 
-def sport(request):
+def cat(request,cat_id):
 	#return HttpResponse("hello")
-	obj = Post.objects.filter(post_category=1)
+	obj = Post.objects.filter(post_category=cat_id).order_by('-date')
 	context = {'post':obj}
-	return render(request,'sport.html',context)
+	return render(request,'cat.html',context)
 	
 		
 

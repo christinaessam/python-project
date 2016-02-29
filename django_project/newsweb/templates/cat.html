@@ -1,0 +1,22 @@
+<html>
+<table>
+  {% for p in post %}
+<tr>
+  <td>Post Title :</td>
+  <td>{{p.title}}</td>
+</tr>
+<tr>
+  <td>
+    Post Content :
+  </td>
+  <td></td>
+  <tr>
+  	<td></td>
+  	<td>{{p.post_content|safe|truncatewords_html:5 }}<a href="/{{p.id}}/showpost/"> show more</a></td>
+
+  </tr>
+  
+</tr>
+{% endfor %}
+</table>
+</html>

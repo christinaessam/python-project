@@ -9,6 +9,8 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class Category(models.Model):
 	category_name = models.CharField(max_length=200)
+	def __str__(self):
+		return self.category_name
 
 class Post (models.Model):
 	title = models.CharField(max_length = 200)
@@ -17,8 +19,12 @@ class Post (models.Model):
 	post_category= models.ForeignKey(Category)
 	#post_image= models.ImageField(upload_to='python_project/django_project/images')
 	date=models.DateTimeField(default=datetime.now)
+	def __str__(self):
+		return self.title
 class Tag(models.Model):
 	tag_name = models.CharField(max_length = 200)
+	def __str__(self):
+		return self.tag_name
 
 class Tag_Posts(models.Model):
 	tag_id = models.ForeignKey(Tag)

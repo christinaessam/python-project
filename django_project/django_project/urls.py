@@ -23,11 +23,11 @@ from django_project import settings
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
-    url(r'^showpost/',views.showpost),
+    url(r'^(?P<p_id>[0-9]+)/showpost',views.showpost),
     url(r'^addpost/',views.createpost),
     url(r'^comments/', include('django_comments.urls')),
+    url(r'^(?P<cat_id>[0-9]+)/cat', views.cat),
    # url(r'^',views.showpost),
-    url(r'^sport/',views.sport),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')), #Added Uploader url 
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
