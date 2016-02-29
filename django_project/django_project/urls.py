@@ -18,26 +18,34 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from newsweb import views 
 from django_project import settings
-#from django.conf.urls.static import static
-#import settings
+
+# imports for login & registration
+from django.conf.urls import patterns
+from newsweb.views import *
+
+
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
     url(r'^(?P<p_id>[0-9]+)/showpost',views.showpost),
-    url(r'^addpost/',views.createpost),
     url(r'^comments/', include('django_comments.urls')),
     url(r'^(?P<cat_id>[0-9]+)/cat', views.cat),
-   # url(r'^',views.showpost),
+    url(r'^$', 'django.contrib.auth.views.login'),#defaultpage>localhost:8000
+    url(r'^logout/$', logout_page),#click logout link
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+        # If user is not login it will redirect to login page
+    url(r'^register/$', register),#click register button @ default page
+    url(r'^register/success/$', register_success),#click register button @ RegPage
+    url(r'^home/$', home),#click login button @ default page
+
+    url(r'^(?P<tag_id>[0-9]+)/tag/$',views.tag_posts),
+    url(r'^showpost/',views.showpost),
+
     url(r'^ckeditor/', include('ckeditor_uploader.urls')), #Added Uploader url 
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,}),
+
 ]
     
 #urlpatterns += static(settings.MEDIA_URL, document_root=setting.MEDIA_ROOT
-
-
-
-
 
 
