@@ -13,7 +13,7 @@ def showpost(request):
 	#for t in tags_ids:
 	tags= Tag.objects.filter(post=1)
 	context = {'post':obj,'tags':tags}
-	return render(request,'ok.html',context)
+	return render(request,'post_comments.html',context)
 	
 def index(request):
 	blogs = Post.objects.all()
@@ -42,6 +42,12 @@ def sport(request):
 	obj = Post.objects.filter(post_category=1)
 	context = {'post':obj}
 	return render(request,'sport.html',context)
+
+def tag_posts(request,tag_id):
+	#posts =  Post.objects.get(tag_id=tag_id)
+	posts = Post.objects.filter(tags=tag_id)
+	return render(request,'tagposts.html', {'posts':posts})
+			
 	
 		
 

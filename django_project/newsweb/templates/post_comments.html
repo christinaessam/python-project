@@ -57,7 +57,7 @@
 				</div>
 				{{post.post_content | safe}}
 				{% for tag in tags %}
-				<a href="#">{{tag.tag_name}}</a>
+				<a href="/{{tag.id}}/tag">{{tag.tag_name}}</a>
 				{% endfor %}
 
 			</div>
@@ -67,6 +67,9 @@
 			
 	{% render_comment_list for post %}
 	{% render_comment_form for post %}
+	
+	
+	
 	
 
 		</div>

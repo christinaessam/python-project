@@ -23,15 +23,16 @@ from django_project import settings
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
+    url(r'^(?P<tag_id>[0-9]+)/tag/$',views.tag_posts),
+    #url(r'^category/(?P<category_id>[0-9]+)', views.category_id),
     url(r'^showpost/',views.showpost),
     url(r'^addpost/',views.createpost),
     url(r'^comments/', include('django_comments.urls')),
    # url(r'^',views.showpost),
     url(r'^sport/',views.sport),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')), #Added Uploader url 
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,}),
+
 ]
     
 #urlpatterns += static(settings.MEDIA_URL, document_root=setting.MEDIA_ROOT
