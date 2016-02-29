@@ -46,7 +46,7 @@
 	<div class = "blog well">
 				{% for post in posts %}
 				<h3>{{post.title}}</h3>
-				{{post.post_content | safe}}
+				{{post.post_content|safe|truncatewords_html:5 }} <a href="/{{post.id}}/showpost/"> show more >> </a>
 				<hr>
 				{% endfor %}
 
