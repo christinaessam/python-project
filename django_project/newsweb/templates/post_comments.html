@@ -1,5 +1,7 @@
+{% extends "base.html" %}
 {% load threadedcomments_tags %}
 <html>
+{% block data %}
 <head>
  <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -58,39 +60,27 @@
 			}	
 }
 	</style>
-	<nav class = "navbar navbar-default navbar-fixedtop" role="navigation">
-		<ul class="nav navbar-nav">
-			{% if user != None %} <!-- check user is not null --> 
-			<a class="navbar-brand" href="#">{{user.username}}</a>
-			<li><a href="#" data-toggle="modal" data-target="#addpost">Add Blog</a>
-			{% endif %}
-			<li><a href="#" data-toggle="modal" data-target="#login" >Login!</a></li> <!--data-toggle and data-target used to make login button open login dialog -->
-		</ul>	
-	</nav>
+	
 	<!--Show all Posts -->	
-	<div class = "page-header centerdiv">
-		<h1>Post Content!</h1>
+	<div class = "blog well">
+		<h1>{{post.title}}</h1>
+		<small>{{post.author}}</small>
 	</div>
 	
 	<div class = "blog well">
-			<div>
-				<div class="page-header">
-					<h3>{{post.title}}</h3>
-					<small>{{post.author}}</small>
-				</div>
+		
+				
 				{{post.post_content | safe}}
 				{% for tag in tags %}
 				<a href="/{{tag.id}}/tag">{{tag.tag_name}}</a>
 				{% endfor %}
 
-			</div>
 		</div>
 	<div class = "blog well">
 		<div>
 			
 	{% render_comment_list for post %}
 		{% if user.is_authenticated %}
-Content for logged in users.
 
 
 			{% get_comment_form for post as commentform %}
@@ -134,3 +124,4 @@ Content for logged in users.
 
 </body>
 </html>
+{% endblock %}
